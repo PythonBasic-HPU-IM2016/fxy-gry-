@@ -1,0 +1,6 @@
+if __name__ == '__main__':
+    flag = True
+    while flag:
+        GameResultStr = GameStart()
+        if GameResultStr != '':
+            flag = GameResult(GameResultStr)
