@@ -1,0 +1,33 @@
+def GameResult(GameResult):
+
+    GameResultBackground = pygame.image.load('GameResultBackground.jpg').convert()
+   
+    ResultHint = pygame.image.load('ResultFont.png').convert_alpha()
+   
+    GameResultFont = pygame.font.Font('EuroBold.ttf', 100)
+    
+    ReStartButton = pygame.image.load('ReStartButton.png').convert_alpha()
+ 
+    ReStartButtonHover = pygame.image.load('ReStartButtonHover.png').convert_alpha()
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                exit()
+            if event.type == pygame.MOUSEBUTTONDOWN and 150 <= event.pos[
+                0] <= 150 + ReStartButton.get_width() and 450 <= event.pos[1] <= 450 + ReStartButton.get_height():
+                return True
+
+        Screen.blit(GameResultBackground, (0, 0))
+
+        Screen.blit(ResultHint, (45, 200))
+        RunTimeSurface = GameResultFont.render(GameResult, True, (255, 69, 0))
+        Screen.blit(RunTimeSurface, (90, 270))
+ 
+        MouseX, MouseY = pygame.mouse.get_pos()
+        if 150 <= MouseX <= 150 + ReStartButton.get_width() and 450 <= MouseY <= 450 + ReStartButton.get_height():
+            Screen.blit(ReStartButtonHover, (150, 450))
+        else:
+            Screen.blit(ReStartButton, (150, 450))
+     
+        pygame.display.update()
